@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaBridge - Formulaire de Candidature</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 450px;
+            border-radius: 30px;
+            padding: 30px 24px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo-container {
+            width: 100%;
+            max-width: 180px;
+            margin: 0 auto 15px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        .brand-title {
+            color: #0e3b8c;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .brand-subtitle {
+            color: #333333;
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            color: #000000;
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="tel"],
+        select {
+            width: 100%;
+            height: 46px;
+            border: 1px solid #dcdcdc;
+            border-radius: 10px;
+            padding: 0 14px;
+            font-size: 14px;
+            color: #333333;
+            background-color: #ffffff;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="date"],
+        select {
+            background-color: #e9e9eb;
+            border: none;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: "↕️";
+            font-size: 12px;
+            color: #555;
+            right: 15px;
+            top: 15px;
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .notice-box {
+            background-color: #edf2ff;
+            color: #2b2b2b;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-top: 6px;
+            border: 1px solid #d0e0ff;
+        }
+
+        .site-link-container {
+            display: block;
+            text-align: center;
+            background-color: #e2e8f0;
+            color: #0e3b8c;
+            padding: 13px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px dashed #0e3b8c;
+            transition: all 0.2s;
+        }
+
+        .site-link-container:hover {
+            background-color: #0e3b8c;
+            color: #ffffff;
+            border-style: solid;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .submit-btn {
+            width: 100%;
+            height: 50px;
+            background-color: #102a61;
+            color: #ffffff;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #0a1c42;
+        }
+
+        #result-msg {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .success { color: #2e7d32; }
+        .error { color: #c62828; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <div class="header">
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo NovaBridge" class="logo-img">
+            </div>
+            <h1 class="brand-title">NOVABRIDGE</h1>
+            <p class="brand-subtitle">L'avenir sans frontières</p>
+        </div>
+
+        <form id="formApplication" method="POST">
+            
+            <!-- REMPLACEZ "VOTRE_CLE_ICI" PAR VOTRE CLÉ WEB3FORMS POUR ACTIVER L'ENVOI PAR EMAIL -->
+            <input type="hidden" name="access_key" value="VOTRE_CLE_ICI">
+            <input type="hidden" name="subject" value="Nouvelle Candidature NovaBridge">
+
+            <div class="form-group">
+                <label for="fullname">Nom et prénom</label>
+                <input type="text" id="fullname" name="Nom_Prenom" required>
+            </div>
+
+            <div class="form-group">
+                <label for="birthdate">Date de naissance</label>
+                <input type="date" id="birthdate" name="Date_Naissance" required>
+            </div>
+
+            <div class="form-group">
+                <label for="birthplace">Lieu de naissance</label>
+                <input type="text" id="birthplace" name="Lieu_Naissance" required>
+            </div>
+
+            <div class="form-group">
+                <label for="whatsapp">Numéro WhatsApp</label>
+                <input type="tel" id="whatsapp" name="WhatsApp" placeholder="Ex: +216..." required>
+            </div>
+
+            <div class="form-group">
+                <label for="country">Pays souhaité</label>
+                <div class="select-wrapper">
+                    <select id="country" name="Pays_Souhaite">
+                        <option value="Tunisie" selected>Tunisie</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="university">Université</label>
+                <div class="select-wrapper">
+                    <select id="university" name="Universite_Selectionnee" onchange="updateUniversitySite()" required>
+                        <option value="" disabled selected>Sélectionnez une université</option>
+                        <option value="uc_tunis">Université Centrale de Tunis</option>
+                        <option value="imset">IMSET (Tunis)</option>
+                        <option value="esprit">Esprit (Tunis)</option>
+                        <option value="ibn_khaldoun">Université Ibn Khaldoun (Tunis)</option>
+                        <option value="epi_sousse">EPI (Sousse)</option>
+                        <option value="espita_sousse">Espita (Sousse)</option>
+                        <option value="horizon_sousse">Horizon (Sousse)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Site internet de l'établissement</label>
+                <div id="notice-msg" class="notice-box">
+                    Sélectionnez une université.
+                </div>
+                <a id="university-site-link" href="#" target="_blank" class="site-link-container hidden">
+                    🌐 Visiter le site de l'université
+                </a>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Valider ma candidature</button>
+            <div id="result-msg"></div>
+
+        </form>
+
+    </div>
+<script>
+const universitesTunisie = {
+    "Université Centrale de Tunis":
+    "https://universitecentrale.net",
+
+    "IMSET (Tunis)":
+    "https://imset.ens.tn",
+
+    "ESPRIT (Tunis)":
+    "https://esprit.tn",
+
+    "Université Ibn Khaldoun (Tunis)":
+    "https://uik.ens.tn",
+
+    "EPI (Sousse)":
+    "https://episup.com",
+
+    "ESPITA (Sousse)":
+    "https://ecoles.com.tn",
+
+    "Horizon (Sousse)":
+    "https://horizon-university.tn"
+};
+
+const pays = document.getElementById("pays");
+const universite = document.getElementById("universite");
+const site = document.getElementById("site");
+
+pays.addEventListener("change", function(){
+
+    if(this.value === "Tunisie"){
+
+        universite.innerHTML = `
+        <option value="">Sélectionnez une université</option>
+        <option>Université Centrale de Tunis</option>
+        <option>IMSET (Tunis)</option>
+        <option>ESPRIT (Tunis)</option>
+        <option>Université Ibn Khaldoun (Tunis)</option>
+        <option>EPI (Sousse)</option>
+        <option>ESPITA (Sousse)</option>
+        <option>Horizon (Sousse)</option>
+        `;
+
+        site.value = "Veuillez choisir une université";
+
+    } else {
+
+        universite.innerHTML = `
+        <option>NOVABRIDGE bientôt dans ce pays</option>
+        `;
+
+        site.value = "Veuillez choisir une université";
+    }
+
+});
+
+universite.addEventListener("change", function(){
+
+    if(universitesTunisie[this.value]){
+        site.value = universitesTunisie[this.value];
+    }
+
+});
+
+</script>
+
+</body>
+</html>
